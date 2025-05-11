@@ -12,12 +12,14 @@
 set $mod Mod4
 
 # Autostart Modules
-exec_always --no-startup-id ~/.config/polybar/polybar_launch.sh
+# exec_always --no-startup-id ~/.config/polybar/polybar_launch.sh
 exec --no-startup-id ~/.config/i3/autostart.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskctl monitor
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id feh --bg-fill ~/.config/backgrounds/asian_city.png
+# exec --no-startup-id feh --bg-fill ~/.config/backgrounds/astronaut-nord.png
+# exec --no-startup-id feh --bg-fill ~/.config/backgrounds/fantasy-woods.jpg
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec --no-startup-id dunst
 exec --no-startup-id flameshot
@@ -30,7 +32,7 @@ set $tm DP-0
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Noto Sans Regular 10
+font pango: Jetbrains Mono 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -334,13 +336,15 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# i3 lock
+# bindsym $mod+l i3lock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -384,19 +388,61 @@ bindsym $mod+r mode "resize"
 #}
 
 
+# theme colors
+set $bg-color            #ffbf00
+set $inactive-bg-color   #333333
+set $inactive-text-color #000000
+set $client.unfocused 	#000000
+# set window colors
+# class                 border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $white               $bg-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color
+
+
+############################################
+# bar settings (input comes from i3blocks) #
+############################################
+
+# Start i3bar to display a workspace bar
+# (plus the system information i3status finds out, if available)
+bar {
+		font pango: Jetbrains Mono 12
+		status_command i3blocks 
+colors {
+    background #000000
+    statusline #FFFFFF
+    focused_workspace #000000 #ffbf00 #000000
+    active_workspace #000000 #ffbf00 #474848
+    inactive_workspace #000000 #666666 #ffffff
+    urgent_workspace #d33682 #d33682 #fdf6e3
+    }
+	   	position top
+	   	i3bar_command i3bar 
+        separator_symbol "|"
+        workspace_min_width 30
+# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
+# reference: https://i3wm.org/docs/userguide.html#_tray_output
+	    tray_output primary
+	    tray_padding 6
+#		# 2px top padding, 6px right padding, 4px bottom padding, 1px left padding		    
+	    padding 2px 6px 2px 0px 
+}
+
+
+
 ### Deepseek Bar
 
 #bar {
-#    position top
-#    status_command i3blocks
-#    mode dock
-#   hidden_state hide
-#   workspace_buttons yes
-#    tray_output primary
-#   tray_padding 6    
+#		position top
+#		status_command i3blocks
+#		mode dock
+#		hidden_state hide
+#		workspace_buttons yes
+#		tray_output primary
+#		tray_padding 6    
 #		 # 2px top padding, 6px right padding, 4px bottom padding, 1px left padding
-# 		padding 3px 6px 3px 0px    
-    
+#		padding 3px 6px 3px 0px    
+#    
 
 #    colors {
 #        background #282A2E    # Main bar background
@@ -413,3 +459,4 @@ bindsym $mod+r mode "resize"
 #    font pango:JetBrains Mono Bold 12  # Bolder text for readability
 #    strip_workspace_numbers yes
 #}
+
