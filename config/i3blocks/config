@@ -43,7 +43,6 @@ interval=1800
 #color=#6969a8
 color=#95C8EE
 
-
 #[terminal]
 #full_text=  
 #color=#807dfe
@@ -114,13 +113,29 @@ command=~/.config/i3blocks/scripts/volume
 instance=Master
 interval=1
 
+[time-chi]
+color=#ffc300
+label= Chicago -
+command=env TZ='America/Chicago' date '+%H:%M:%S'
+interval=1
+min_width=200
+align=center
+
+[time-ny]
+color=#FEDC97
+label= New York -
+command=env TZ='America/New_York' date '+%H:%M:%S'
+interval=1
+min_width=200
+align=center
+
 [time]
-label=
+color=#a2d2ff
+label= Vienna -
 command=date '+%a %d %b %H:%M:%S'
 interval=1
 min_width=170
 align=center
-
 
 [shutdown_menu]
 full_text=  

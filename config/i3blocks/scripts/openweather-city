@@ -42,6 +42,9 @@ case $WEATHER_CONDITION in
   'Clear')
     WEATHER_ICON=" Clear"
     ;;
+  'Fog')
+    WEATHER_ICON="  Foggy"
+    ;;
 esac
 
 

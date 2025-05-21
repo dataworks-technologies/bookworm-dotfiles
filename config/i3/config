@@ -13,17 +13,20 @@ set $mod Mod4
 
 # Autostart Modules
 # exec_always --no-startup-id ~/.config/polybar/polybar_launch.sh
-exec --no-startup-id ~/.config/i3/autostart.sh
+# exec --no-startup-id ~/.config/i3/autostart.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskctl monitor
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id feh --bg-fill ~/.config/backgrounds/asian_city.png
-# exec --no-startup-id feh --bg-fill ~/.config/backgrounds/astronaut-nord.png
+# exec --no-startup-id feh --bg-fill ~/.config/backgrounds/asian_city.png
+exec --no-startup-id feh --bg-fill ~/.config/backgrounds/astronaut-nord.png
 # exec --no-startup-id feh --bg-fill ~/.config/backgrounds/fantasy-woods.jpg
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
+exec --no-startup-id /usr/local/bin/picom -b --config ~/.config/picom/picom.conf
+
+exec --no-startup-id picom -b
 exec --no-startup-id dunst
 exec --no-startup-id flameshot
-
+# exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 # Set Monitors
 set $fm DP-6
@@ -84,6 +87,13 @@ for_window [class="Galculator"] floating enable
 for_window [class="1Password"] floating enable
 for_window [class="MotiveWave" title="Settings"] floating enable
 for_window [class="MotiveWave" title="Backup Workspace"] floating enable
+for_window [class="MotiveWave" title="Object Viewer"] floating enable
+for_window [class="MotiveWave" title="Preferences"] floating enable
+for_window [class="MotiveWave" title="Edit Instrument"] floating enable
+for_window [class="MotiveWave" title="Restore Workspace"] floating enable
+for_window [class="tuned-gui"] floating enable
+for_window [class="Tuned-gui"] floating enable
+for_window [class="TuneD Manager"] floating enable
 
 
 
@@ -316,6 +326,7 @@ for_window [class="MotiveWave" title="Desktop - PA Overview Charts"] move contai
 for_window [class="MotiveWave" title="Desktop - Account Management"] move container to workspace 28
 for_window [class="MotiveWave" title="MotiveWave - Console (Template Development)"] move container to workspace 8
 for_window [class="MotiveWave" title="Desktop - Price Structure Charts"] move container to workspace 18
+for_window [class="MotiveWave" title="Desktop - Keltner Channel - Price Structure Charts"] move container to workspace 18
 for_window [class="MotiveWave" title="Desktop - Renko Charts - Account Management"] move container to workspace 28
 
 
@@ -409,10 +420,11 @@ bar {
 		font pango: Jetbrains Mono 12
 		status_command i3blocks 
 colors {
-    background #000000
+# background color of i3 status bar - standard is 000000
+    background #252525
     statusline #FFFFFF
     focused_workspace #000000 #ffbf00 #000000
-    active_workspace #000000 #ffbf00 #474848
+    active_workspace #000000 #ffbf00 #000000
     inactive_workspace #000000 #666666 #ffffff
     urgent_workspace #d33682 #d33682 #fdf6e3
     }
