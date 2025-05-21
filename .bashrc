@@ -131,6 +131,8 @@ alias kvm-network='sudo virsh net-start default'
 alias tuned-status='sudo systemctl status tuned'
 alias balanced='sudo tuned-adm profile balanced'
 alias desktop='sudo tuned-adm profile desktop'
+alias latency='sudo tuned-adm profile latency-performance'
+alias server='sudo tuned-adm profile throughput-performance'
 alias poweroff='sudo poweroff'
 alias reboot='sudo reboot'
 alias x="exit"
@@ -138,7 +140,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias clean='sudo apt-get clean'
 alias hdd='ncdu'
-alias start-ai='docker start open-webui'
+alias rm='rm -i'
 
 
 # PS1 Customization
